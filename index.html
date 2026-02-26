@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Anna Vestman | Front end developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+   rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+ </head>
+ <body>
+  <nav id="navContainer">
+   <div class="navWrapper">
+    <a href="#">
+     <img src="images/logoPortfolio63x63.svg" alt="Anna Vestman logo" />
+    </a>
+
+    <button
+     id="hamburgerBtn"
+     aria-label="Navigation toggle"
+     aria-expanded="false"
+     aria-controls="mobileNav">
+     <img src="icons/bars-solid-full.svg" class="openIcon" alt="Menu open" />
+     <img src="icons/xmark-solid-full.svg" class="closeIcon" alt="Close menu" />
+    </button>
+
+    <div class="navContentLinks" id="desktopNav">
+     <a href="#projects" data-link>Projects</a>
+     <a href="#about" data-link>About me</a>
+     <a href="#contact" data-link>Contact</a>
+    </div>
+   </div>
+  </nav>
+  <div id="mobileNav" class="navOverlay">
+   <a href="#projects" data-link>Projects</a>
+   <a href="#about" data-link>About me</a>
+   <a href="#contact" data-link>Contact</a>
+  </div>
+
+  <main>
+   <section class="heroSection">
+    <div id="heroContainer">
+     <img
+      src="images/heroImg3.svg"
+      alt="sketch of Anna with text in the background" />
+    </div>
+   </section>
+
+   <section class="cardSection">
+    <div id="cardContainer">
+     <div class="cardContent">
+      <h1>RainyDays</h1>
+     </div>
+    </div>
+   </section>
+  </main>
+ </body>
+</html>

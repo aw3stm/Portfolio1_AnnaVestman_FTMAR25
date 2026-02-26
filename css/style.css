@@ -1,0 +1,163 @@
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+:root {
+ --h1-mobile-size: 24px;
+ --h2-mobile-size: 20px;
+ --h3-mobile-size: 18px;
+ --p-mobile-size: 16px;
+
+ --h1-desktop-size: 40px;
+ --h2-desktop-size: 32px;
+ --h3-desktop-size: 24px;
+ --p-desktop-size: 20px;
+}
+
+a {
+ text-decoration: none;
+ list-style: none;
+ cursor: pointer;
+ color: #fff;
+}
+
+body {
+ width: 100%;
+ background: #121212;
+ font-family: "figtree", Arial, Helvetica, sans-serif;
+ position: relative;
+ overflow-x: hidden;
+ color: #fff;
+}
+
+body::before {
+ content: "";
+ position: fixed;
+ width: 900px;
+ height: 900px;
+ background: radial-gradient(circle at 50% 15%, #5a8f7b 0%, transparent 80%);
+ top: 250px;
+ left: 50%;
+ transform: translateX(-50%);
+ filter: blur(200px);
+ opacity: 0.2;
+ z-index: -1;
+ pointer-events: none;
+}
+
+#navContainer {
+ width: 100%;
+ height: 70px;
+ padding: 12px 23px;
+}
+
+nav img {
+ width: 40px;
+}
+
+#hamburgerBtn {
+ position: relative;
+ z-index: 1100;
+ background: none;
+ border: none;
+ padding: 0;
+ cursor: pointer;
+}
+
+#hamburgerBtn.active {
+ position: fixed;
+ top: 20px;
+ right: 20px;
+}
+
+#hamburgerBtn.active .openIcon {
+ display: none;
+}
+#hamburgerBtn.active .closeIcon {
+ display: inline;
+}
+.closeIcon {
+ display: none;
+}
+
+.navWrapper {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.navContentLinks {
+ display: none;
+}
+
+#mobileNav {
+ position: fixed;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.7);
+ backdrop-filter: blur(10px);
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-start;
+ padding-top: 20vh;
+ align-items: center;
+ gap: 32px;
+ transform: translateY(-100%);
+ transition: transform 0.3s ease;
+ z-index: 1000;
+}
+#mobileNav.active {
+ transform: translateY(0);
+}
+#mobileNav a {
+ font-size: 24px;
+}
+
+/*Hero Section */
+.heroSection {
+ padding-bottom: 120px;
+}
+#heroContainer {
+ width: 100%;
+ display: flex;
+ margin: 0 auto;
+}
+
+#heroContainer img {
+ width: 100%;
+ max-width: 100%;
+ height: auto;
+ mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+}
+
+.cardSection {
+ width: 100%;
+}
+
+#cardContainer {
+ width: 100%;
+ padding: 0 32px;
+ display: grid;
+ grid-template-columns: 1fr;
+}
+
+.cardContent h1 {
+ font-size: var(--h1-mobile-size);
+}
+
+@media (min-width: 768px) {
+ .navContentLinks {
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 300;
+ }
+
+ .navContentLinks a {
+  color: #fff;
+  cursor: pointer;
+ }
+ #hamburgerBtn {
+  display: none;
+ }
+}
