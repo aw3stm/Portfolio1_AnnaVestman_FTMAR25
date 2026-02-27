@@ -28,3 +28,20 @@ document.addEventListener("keydown", (e) => {
   btn.setAttribute("aria-expanded", "false");
  }
 });
+
+//CV Progress bar
+const cvTimeline = document.querySelector(".cvSection");
+const timeProgress = document.querySelector(".cvProgress");
+
+window.addEventListener("scroll", () => {
+ const cvRect = cvTimeline.getBoundingClientRect();
+
+ const cvWindowHeight = window.innerHeight;
+ const cvTotalHeight = cvTimeline.offsetHeight;
+ const cvVisable = cvWindowHeight - cvRect.top;
+
+ let cvPercent = (cvVisable / cvTotalHeight) * 100;
+ cvPercent = Math.max(0, Math.min(cvPercent, 100));
+
+ timeProgress.style.height = cvPercent + "%";
+});
