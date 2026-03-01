@@ -248,8 +248,8 @@ h1.cardTitle {
 }
 
 .aboutSection {
- margin-top: 40px;
- padding: 80px 24px 170px;
+ margin: 32px auto;
+ padding: 80px 10vw 170px;
  position: relative;
  overflow: visible;
  background: #1d1d1d;
@@ -262,7 +262,7 @@ h1.cardTitle {
  font-weight: 800;
  line-height: 1;
  text-align: right;
- margin-bottom: 20px;
+ margin-bottom: 12px;
 }
 
 .aboutTitle span {
@@ -272,8 +272,8 @@ h1.cardTitle {
 .aboutImg {
  display: block;
  width: 90%;
- max-width: 420px;
- margin: 32px auto 0;
+ max-width: 390px;
+ margin: 32px 72px 24px 0;
  position: relative;
  z-index: 2;
  transform: translateY(clamp(12px, 8vw, 40px));
@@ -298,27 +298,30 @@ h1.cardTitle {
  gap: 32px;
 }
 
+/*CV Section */
+.cvSection {
+ margin: 40px 0;
+}
+.cvTitle {
+ text-align: center;
+}
+
 .cvContainer {
  display: grid;
- grid-template-columns: 160px 2px 1fr;
- gap: 40px;
- position: relative;
- align-items: stretch;
+ grid-template-columns: 1fr 2px 1fr;
+ gap: 20px;
 }
 
 .cvStroke {
  position: relative;
  background: #2a2a2a;
  border-radius: 8px;
- 
 }
 
 .cvYears {
  display: grid;
  gap: 180px;
- position: sticky;
- top: 140px;
- height: max-content;
+ text-align: right;
 }
 
 .edYear {
@@ -328,24 +331,24 @@ h1.cardTitle {
 }
 
 .edYear::after {
- content: "";
- display: block;
- right: -32px;
- top: 8px;
- width: 10px;
- height: 10px;
- background: #2a2a2a;
- border-radius: 50%;
  position: absolute;
+ content: "";
+ right: -31px;
+ top: 50%;
+ width: 16px;
+ height: 16px;
+ transform: translateY(-50%);
+ background: #fff;
+ border: 2px solid var(--bg-color);
+ border-radius: 50%;
+ z-index: 2;
 }
 
-.edYear.active {
- opacity: 1;
- color: #fff;
+.edYear.active::after {
+ background: #fff;
 }
 
 .cvContent {
- max-width: 700px;
  display: grid;
  gap: 180px;
 }
@@ -356,7 +359,7 @@ h1.cardTitle {
  left: 0;
  width: 100%;
  height: 0%;
- background: #fff;
+ background: var(--btn-color);
  border-radius: 8px;
  transition: height 0.2s linear;
 }
@@ -374,6 +377,8 @@ h1.cardTitle {
  font-size: var(--h2-mobile-size);
  margin-bottom: 60px;
 }
+
+/*Media query */
 
 @media (min-width: 768px) {
  .navContentLinks {
@@ -467,5 +472,39 @@ h1.cardTitle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+ }
+
+ .cvSection {
+  max-width: 1440px;
+  margin-bottom: 56px;
+ }
+
+ .cvTitle {
+  font-size: var(--h2-desktop-size);
+ }
+
+ .cvContainer {
+  width: 100%;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 0;
+ }
+
+ .cvYears {
+  text-align: right;
+  justify-items: end;
+  padding-right: 40px;
+ }
+
+ .cvContent {
+  text-align: left;
+  padding-left: 40px;
+ }
+
+ .edYear::after {
+  right: -46px;
+ }
+
+ .edYear::after {
+  right: -51px;
  }
 }

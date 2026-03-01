@@ -38,9 +38,9 @@ window.addEventListener("scroll", () => {
 
  const cvWindowHeight = window.innerHeight;
  const cvTotalHeight = cvTimeline.offsetHeight;
- const cvVisable = cvWindowHeight - cvRect.top;
+ const cvVisible = cvWindowHeight - cvRect.top;
 
- let cvPercent = (cvVisable / cvTotalHeight) * 100;
+ let cvPercent = (cvVisible / cvTotalHeight) * 100;
  cvPercent = Math.max(0, Math.min(cvPercent, 100));
 
  timeProgress.style.height = cvPercent + "%";
