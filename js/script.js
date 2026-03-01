@@ -29,7 +29,7 @@ document.addEventListener("keydown", (e) => {
  }
 });
 
-//CV Progress bar
+//CV Progress bar, fill color while scrolling
 const cvTimeline = document.querySelector(".cvSection");
 const timeProgress = document.querySelector(".cvProgress");
 
@@ -44,4 +44,36 @@ window.addEventListener("scroll", () => {
  cvPercent = Math.max(0, Math.min(cvPercent, 100));
 
  timeProgress.style.height = cvPercent + "%";
+});
+
+//Change color on the circle while scrolling the CV
+document.addEventListener("DOMContentLoaded", () => {
+ const cvContents = document.querySelectorAll(".cvContent");
+
+ //The row has to be in the middle of the screen
+ const observerOpt = {
+  root: null,
+  rootMargin: "-40% 0px -40% 0px",
+  threshold: 0,
+ };
+ const cvGuard = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+   if (entry.isIntersecting) {
+    document.querySelectorAll(".edYear").forEach((year) => {
+     year.classList.remove("active");
+    });
+
+    //Find year for a specific row and add active class
+    const activeYears = entry.target.querySelector(".edYear");
+    if (activeYears) {
+     activeYears.classList.add("active");
+    }
+   }
+  });
+ }, observerOpt);
+ 
+ //Check every row
+ cvContents.forEach((row) => {
+  cvGuard.observe(row);
+ });
 });
