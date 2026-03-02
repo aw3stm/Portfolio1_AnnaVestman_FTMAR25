@@ -490,6 +490,17 @@ h1.cardTitle {
  margin-top: 40px;
 }
 
+.socialIcons {
+ display: flex;
+ justify-content: center;
+ gap: 16px;
+}
+
+.socialIcons img {
+ width: 46px;
+ height: auto;
+}
+
 /*Media query */
 
 @media (min-width: 768px) {
