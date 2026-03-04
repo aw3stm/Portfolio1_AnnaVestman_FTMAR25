@@ -40,21 +40,20 @@ body {
 body::before {
  content: "";
  position: fixed;
- width: 900px;
- height: 900px;
- background: radial-gradient(circle at 50% 15%, #5a8f7b 0%, transparent 80%);
- top: 250px;
- left: 50%;
- transform: translateX(-50%);
- filter: blur(200px);
- opacity: 0.2;
+ width: 100vw;
+ height: 100vh;
+ background-image: url("../images/bg-image.jpg");
+ background-size: cover;
+ top: 0;
+ left: 0;
+ mix-blend-mode: overlay;
+ opacity: 40;
  z-index: -1;
  pointer-events: none;
 }
 
 .primaryBtn {
  background: var(--btn-color);
- border: none;
  padding: 16px 32px;
  border-radius: 10px;
  color: #fff;
@@ -64,6 +63,8 @@ body::before {
  line-height: 1;
  text-transform: uppercase;
  cursor: pointer;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+ border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /*NAV Section */
@@ -140,7 +141,7 @@ nav img {
 
 /*Hero Section */
 .heroSection {
- padding-bottom: 48px;
+ margin-bottom: 84px;
 }
 
 #heroContainer {
@@ -195,6 +196,8 @@ h1.cardTitle {
  background: #1d1d1d;
  border-radius: 20px;
  overflow: hidden;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+ border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card img {
@@ -226,6 +229,7 @@ h1.cardTitle {
 
 .cardBtn {
  display: flex;
+ max-width: fit-content;
  gap: 12px;
  margin: 12px 0;
 }
@@ -251,20 +255,26 @@ h1.cardTitle {
 
 .aboutSection {
  margin: 32px auto;
- padding: 80px 10vw 170px;
+ padding: 50px 10vw 80px;
  position: relative;
  overflow: visible;
  background: #1d1d1d;
  border-radius: 20px;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+ border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 
 .aboutTitle {
  position: relative;
- font-size: clamp(40px, 20vw, 64px);
+ font-size: clamp(40px, 12vw, 64px);
+ color: #ffc073;
  font-weight: 800;
  line-height: 1;
  text-align: right;
- margin-bottom: 12px;
+ margin-bottom: 4px;
+ z-index: 3;
+ top: 20px;
 }
 
 .aboutTitle span {
@@ -272,32 +282,87 @@ h1.cardTitle {
 }
 
 .aboutImg {
- display: block;
- width: 90%;
- max-width: 390px;
- margin: 32px 72px 24px 0;
- position: relative;
+ width: 100%;
+ max-width: 350px;
+ bottom: -2px;
+ left: 30%;
+ position: absolute;
  z-index: 2;
- transform: translateY(clamp(12px, 8vw, 40px));
+ transform: translateX(-50%);
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 55%,
+    rgba(0,0,0,0.6) 75%,
+    rgba(0,0,0,0) 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 55%,
+    rgba(0,0,0,0.6) 75%,
+    rgba(0,0,0,0) 100%
+  );
 }
+
+
 
 .aboutContent {
  position: relative;
  background: #1d1d1d;
- padding: 110px 24px 80px;
- margin-top: -320px;
+ padding: 40px 24px 80px;
+ margin-top: -240px;
  z-index: 3;
+ line-height: 1.4;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+ border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.aboutSection::before,
+.aboutContent::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-image: url("../images/michal-binkiewicz-NPnNiG6q7LA-unsplash.jpg");
+ background-repeat: repeat;
+ opacity: 0.01;
+ z-index: 1;
+ pointer-events: none;
+ border-radius: inherit;
+}
+
+.aboutSection .aboutTitle,
+.aboutSection .aboutImg,
+.aboutContent .aboutContainer {
+ position: relative;
+ z-index: 2;
 }
 
 .aboutContainer {
- max-width: 420px;
+ max-width: 520px;
  margin: 0 auto;
+}
+
+.aboutContainer h3 {
+ text-align: center;
 }
 
 .aboutColumns {
  display: grid;
  grid-template-columns: 1fr;
  gap: 32px;
+ margin: 32px 0;
+}
+
+.columnBottomLeft {
+ margin: 16px 0;
+}
+
+.textStyling {
+ color: var(--btn-color);
+ font-weight: 600;
 }
 
 /*CV Section */
@@ -415,6 +480,7 @@ h1.cardTitle {
  text-transform: uppercase;
  font-weight: 400;
 }
+
 .cvWorkContainer {
  display: grid;
  grid-template-columns: 1fr 1fr;
@@ -453,11 +519,30 @@ h1.cardTitle {
  display: flex;
  flex-direction: column;
  align-items: center;
- background: #1d1d1d;
+ position: relative;
+ overflow: hidden;
+ background: linear-gradient(135deg, #2a2a2a 0%, #1d1d1d 100%);
+ border: 1px solid rgba(255, 255, 255, 0.05);
  max-width: 600px;
  margin: 0 auto;
  padding: 64px 24px;
  border-radius: 18px;
+ box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.contactInfo::before {
+ content: "";
+ position: absolute;
+ top: 10px;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-image: url("../images/michal-binkiewicz-NPnNiG6q7LA-unsplash.jpg");
+ background-repeat: repeat;
+ opacity: 0.01;
+ z-index: 1;
+ pointer-events: none;
+ border-radius: inherit;
 }
 
 .connectTitle {
@@ -479,6 +564,22 @@ h1.cardTitle {
  font-family: "figtree";
  font-size: var(--h4-mobile-size);
  font-weight: 600;
+ background: transparent;
+ border: 2px solid var(--btn-color);
+ color: var(--btn-color);
+ border-radius: 0 16px 16px 16px;
+ transition:
+  box-shadow 300ms ease-in-out,
+  color 300ms ease-in-out;
+ &:hover {
+  box-shadow: 0 0 40px 40px var(--btn-color) inset;
+ }
+
+ &:hover,
+ &:focus {
+  color: #fff;
+  outline: 0;
+ }
 }
 
 .primaryBtn img {
@@ -494,6 +595,23 @@ h1.cardTitle {
  display: flex;
  justify-content: center;
  gap: 16px;
+}
+
+.linkedInSocial,
+.instagramSocial {
+ transition:
+  box-shadow 300ms ease-in-out,
+  color 300ms ease-in-out;
+ &:hover {
+  box-shadow: 0 0 40px 40px var(--btn-color) inset;
+ }
+
+ &:hover,
+ &:focus {
+  color: #fff;
+  outline: 0;
+  border-radius: 0 8px 8px 8px;
+ }
 }
 
 .socialIcons img {
@@ -546,12 +664,11 @@ h1.cardTitle {
 
  .aboutSection {
   width: 100%;
-  max-width: 1100px;
-  margin: 48px auto;
+  max-width: 900px;
+  padding: 40px 80px 60px;
+  margin: 48px auto 0;
   position: relative;
-  height: 580px;
   background: #1d1d1d;
-  overflow: visible;
   border-radius: 20px;
  }
 
@@ -561,40 +678,61 @@ h1.cardTitle {
   font-size: clamp(80px, 7vw, 140px);
   font-weight: 800;
   line-height: 1;
-  right: 120px;
-  top: 80px;
+  right: 20px;
+  top: 20px;
   z-index: 3;
  }
 
  .aboutImg {
+  max-width: 500px;
   position: absolute;
-  bottom: -140px;
-  left: 180px;
+  bottom: 10px;
+  left: -20px;
   z-index: 2;
-  width: 480px;
-  transform: scale(1.1);
+  transform: none;
  }
 
  .aboutContent {
   width: 100%;
-  max-width: 1100px;
-  transform: translateY(-105px);
+  max-width: 900px;
+  transform: none;
   background: #1d1d1d;
-  margin: 0 auto;
-  padding: 160px 80px 100px;
+  margin: -280px auto 0;
+  padding: 60px 50px 40px;
   position: relative;
   z-index: 4;
  }
 
  .aboutContainer {
-  max-width: 800px;
+  max-width: 700px;
+  margin: 0 auto;
+ }
+
+ .columnBottomLeft {
+  margin: 16px 0;
+ }
+
+ .aboutContainer h3 {
+  font-size: var(--h3-desktop-size);
+  line-height: 1.5;
+  text-align: center;
+  max-width: 500px;
   margin: 0 auto;
  }
 
  .aboutColumns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 33px;
+  margin: 32px 0;
+  font-size: var(--p-desktop-size);
+  font-weight: 200;
+  line-height: 1.4;
+ }
+
+ .textStyling {
+  color: var(--btn-color);
+  font-weight: 600;
  }
 
  .cvSection {
@@ -659,5 +797,36 @@ h1.cardTitle {
 
  .cvWork h4 {
   font-size: var(--h4-desktop-size);
+ }
+
+ .connectTitle {
+  font-size: var(--h2-desktop-size);
+  margin-bottom: 24px;
+ }
+
+ .contactInfo p {
+  width: 100%;
+  max-width: 500px;
+  font-size: var(--p-desktop-size);
+  margin-bottom: 32px;
+  line-height: 1.5;
+  font-weight: 300;
+ }
+
+ .connectBtn {
+  font-size: var(--h4-desktop-size);
+  font-weight: 400;
+ }
+
+ .primaryBtn img {
+  width: 24px;
+  height: auto;
+ }
+
+ .socialsContact p {
+  width: 100%;
+  max-width: 420px;
+  font-weight: 200;
+  line-height: 1.5;
  }
 }

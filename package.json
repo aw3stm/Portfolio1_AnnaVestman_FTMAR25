@@ -1,0 +1,25 @@
+{
+ "name": "portfolio1_annavestman_ftmar25",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "scripts": {
+  "start": "live-server",
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/aw3stm/Portfolio1_AnnaVestman_FTMAR25.git"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC",
+ "type": "commonjs",
+ "bugs": {
+  "url": "https://github.com/aw3stm/Portfolio1_AnnaVestman_FTMAR25/issues"
+ },
+ "homepage": "https://github.com/aw3stm/Portfolio1_AnnaVestman_FTMAR25#readme",
+ "devDependencies": {
+  "live-server": "^1.2.2"
+ }
+}
