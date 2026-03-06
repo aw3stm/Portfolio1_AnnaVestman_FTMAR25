@@ -71,9 +71,83 @@ document.addEventListener("DOMContentLoaded", () => {
    }
   });
  }, observerOpt);
- 
+
  //Check every row
  cvContents.forEach((row) => {
   cvGuard.observe(row);
  });
+});
+
+// About me carousel
+document.addEventListener("DOMContentLoaded", () => {
+ const carouselContent = document.querySelector(".carouselContent");
+ const leftBtn = document.querySelector(".leftBtn");
+ const rightBtn = document.querySelector(".rightBtn");
+ const carouselContainer = document.querySelector(".carouselContainer");
+ const flipCards = document.querySelectorAll(".flipCard");
+
+ if (!carouselContent || flipCards.length === 0) return;
+
+ let currentIndex = 0;
+ const maxIndex = flipCards.length - 1;
+
+ const updateCarousel = () => {
+  carouselContent.style.transform = `translateX(-${currentIndex * 100}%)`;
+ };
+
+ if (rightBtn && leftBtn) {
+  rightBtn.addEventListener("click", () => {
+   if (currentIndex < maxIndex) {
+    currentIndex++;
+   } else {
+    currentIndex = 0;
+   }
+   updateCarousel();
+  });
+
+  leftBtn.addEventListener("click", () => {
+   if (currentIndex > 0) {
+    currentIndex--;
+   } else {
+    currentIndex = maxIndex;
+   }
+   updateCarousel();
+  });
+ }
+ if (carouselContainer) {
+  let startX = 0;
+  let endX = 0;
+  carouselContainer.addEventListener(
+   "touchstart",
+   (e) => {
+    startX = e.touches[0].clientX;
+   },
+   { passive: true },
+  );
+  carouselContainer.addEventListener(
+   "touchend",
+   (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+   },
+   { passive: true },
+  );
+
+  const handleSwipe = () => {
+   const swipeTresh = 50;
+   const diff = startX - endX;
+
+   if (diff > swipeTresh) {
+    if (currentIndex < maxIndex) {
+     currentIndex++;
+     updateCarousel();
+    }
+   } else if (diff < -swipeTresh) {
+    if (currentIndex > 0) {
+     currentIndex--;
+     updateCarousel();
+    }
+   }
+  };
+ }
 });

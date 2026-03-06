@@ -32,7 +32,7 @@
     <div class="navContentLinks" id="desktopNav">
      <a href="#projects" data-link>Projects</a>
      <a href="#about" data-link>About me</a>
-     <a href="#about" data-link>CV</a>
+     <a href="#CV" data-link>CV</a>
      <a href="#contact" data-link>Contact</a>
     </div>
    </div>
@@ -40,6 +40,7 @@
   <div id="mobileNav" class="navOverlay">
    <a href="#projects" data-link>Projects</a>
    <a href="#about" data-link>About me</a>
+   <a href="#CV" data-link>CV</a>
    <a href="#contact" data-link>Contact</a>
   </div>
 
@@ -52,7 +53,7 @@
     </div>
    </section>
 
-   <section class="cardSection">
+   <section class="cardSection" id="projects">
     <div class="cardTop">
      <h1 class="cardTitle">Some of my projects</h1>
     </div>
@@ -144,14 +145,74 @@
     </div>
    </section>
 
-   <section class="aboutSection">
-    <h2 class="aboutTitle">
-     <span>So,</span>
-     <span>Who</span>
-     <span>Am I?</span>
-    </h2>
-    <img src="images/aboutMe_Me2.svg" class="aboutImg" alt="" />
+
+
+
+   <section class="aboutSection" id="about">
+    <div class="aboutWrapper">
+     <h2 class="aboutTitle">
+      <span>So,</span>
+      <span>Who</span>
+      <span>Am I?</span>
+     </h2>
+
+     <div class="carouselWrapper">
+      <button class="carouselBtn leftBtn">
+       <img src="icons/chevronLeft.svg" alt="Previous" />
+      </button>
+
+      <div class="carouselContainer">
+       <div class="carouselContent">
+
+        <div class="flipCard">
+         <div class="flipCardInner">
+          <div class="flipCardFront">
+           <img src="images/AnnaActing.jpg" alt="Acting" />
+          </div>
+          <div class="flipCardBack">
+           <h3>Acting</h3>
+           <p>Commercials · Educational films · Media productions</p>
+          </div>
+         </div>
+        </div>
+
+          <div class="flipCard">
+         <div class="flipCardInner">
+          <div class="flipCardFront">
+           <img src="images/AnnaVideo.jpg" alt="Video production" />
+          </div>
+          <div class="flipCardBack">
+           <h3>Video Production</h3>
+           <p>Pre-production · Production · post-production</p>
+          </div>
+         </div>
+        </div>
+
+          <div class="flipCard">
+         <div class="flipCardInner">
+          <div class="flipCardFront">
+           <img src="images/AnnaFrontEnd.jpg" alt="Frontend development" />
+          </div>
+          <div class="flipCardBack">
+           <h3>Frontend Development</h3>
+           <p>Design · HTML · CSS · JavaScript · Frameworks · Project Methodology</p>
+          </div>
+         </div>
+        </div>
+
+       </div>
+      </div>
+      <button class="carouselBtn rightBtn">
+        <img src="icons/chevronRight.svg" alt="Next">
+      </button>
+     </div>
+
+    </div>
    </section>
+
+
+
+
 
    <section class="aboutContent">
     <div class="aboutContainer">
@@ -177,13 +238,16 @@
         began studying front-end development, combining creativity with
         structured problem-solving and code.
        </p>
-       <p class="columnBottomLeft"><span class="textStyling">I enjoy</span> tackling complex problems until a strong, high-quality solution is achieved.</p>
+       <p class="columnBottomLeft">
+        <span class="textStyling">I enjoy</span> tackling complex problems until
+        a strong, high-quality solution is achieved.
+       </p>
       </div>
      </div>
     </div>
    </section>
 
-   <section class="cvSection" id="cv">
+   <section class="cvSection" id="CV">
     <h2 class="cvTitle">Education</h2>
     <div class="cvContainer">
      <div class="cvStroke">
@@ -285,7 +349,6 @@
 
      <article class="cvWork">
       <h3>Freelancer</h3>
-      <h4>Clients:</h4>
       <p>WhyMac</p>
       <p>OTW</p>
       <p>NCC</p>
@@ -301,7 +364,7 @@
     </div>
    </section>
 
-   <section class="contactSection">
+   <section class="contactSection" id="contact">
     <div class="contactInfo">
      <h2 class="connectTitle">Let's talk code, cameras, or coffee.</h2>
      <p>
@@ -336,5 +399,15 @@
     </div>
    </section>
   </main>
+  <footer>
+   <div class="footerContainer">
+    <div class="footerContent">
+     <div class="footerLeft"><p>&copy Anna Vestman</p></div>
+     <div class="footerRight">
+      Portfolio built with HTML, CSS and JavaScript.
+     </div>
+    </div>
+   </div>
+  </footer>
  </body>
 </html>

@@ -21,6 +21,10 @@
  --btn-color: #6d9d8c;
 }
 
+html {
+ scroll-behavior: smooth;
+}
+
 a {
  text-decoration: none;
  list-style: none;
@@ -137,6 +141,12 @@ nav img {
 
 #mobileNav a {
  font-size: 24px;
+ transition: color 0.3s ease;
+}
+
+#mobileNav a:hover,
+#mobileNav a:focus {
+ color: var(--btn-color);
 }
 
 /*Hero Section */
@@ -177,6 +187,7 @@ h1.cardTitle {
  font-size: var(--h1-mobile-size);
  white-space: nowrap;
  font-weight: 200;
+ margin-bottom: 16px;
 }
 
 .cardContainer {
@@ -245,7 +256,6 @@ h1.cardTitle {
  &:hover {
   box-shadow: 0 0 40px 40px var(--btn-color) inset;
  }
-
  &:hover,
  &:focus {
   color: #fff;
@@ -254,63 +264,137 @@ h1.cardTitle {
 }
 
 .aboutSection {
- margin: 32px auto;
- padding: 50px 10vw 80px;
- position: relative;
- overflow: visible;
+ width: 100%;
+ max-width: 392px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 40px 15px;
+ margin: 64px auto;
+ overflow: hidden;
  background: #1d1d1d;
  border-radius: 20px;
  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.aboutWrapper {
+ width: 100%;
+}
 
 .aboutTitle {
- position: relative;
- font-size: clamp(40px, 12vw, 64px);
+ font-size: 32px;
  color: #ffc073;
- font-weight: 800;
- line-height: 1;
- text-align: right;
- margin-bottom: 4px;
- z-index: 3;
- top: 20px;
+ text-align: center;
+ display: flex;
+ justify-content: center;
+ gap: 8px;
+ margin-bottom: 32px;
 }
 
-.aboutTitle span {
- display: block;
-}
-
-.aboutImg {
+.carouselWrapper {
+ display: flex;
+ align-items: center;
+ justify-content: center;
  width: 100%;
- max-width: 350px;
- bottom: -2px;
- left: 30%;
- position: absolute;
+ position: relative;
  z-index: 2;
- transform: translateX(-50%);
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 55%,
-    rgba(0,0,0,0.6) 75%,
-    rgba(0,0,0,0) 100%
-  );
-
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 55%,
-    rgba(0,0,0,0.6) 75%,
-    rgba(0,0,0,0) 100%
-  );
 }
 
+.carouselContainer {
+ flex: 1;
+ width: 100%;
+ max-width: 100%;
+ touch-action: pan-y;
+ overflow: hidden;
+ border-radius: 12px;
+}
 
+.carouselContent {
+ display: flex;
+ transition: transform 0.8s ease-in-out;
+ gap: 0;
+}
+
+.carouselBtn {
+ display: none;
+}
+
+.flipCard {
+ flex: 0 0 100%;
+ width: 100%;
+ height: 450px;
+ min-width: 100%;
+ perspective: 1000px;
+ background-color: transparent;
+}
+
+.flipCardInner {
+ position: relative;
+ width: 100%;
+ height: 100%;
+ text-align: center;
+ transition: transform 0.5s;
+ transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCardInner {
+ transform: rotateY(180deg);
+}
+
+.flipCardFront,
+.flipCardBack {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ overflow: hidden;
+ backface-visibility: hidden;
+ border-radius: 12px;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+ transition: box-shadow 0.5s ease;
+}
+
+.flipCard:hover .flipCardFront,
+.flipCard:hover .flipCardBack {
+ box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.flipCardFront img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+.flipCardBack {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: rgba(30, 38, 33, 64%);
+ color: #fff;
+ padding: 32px;
+ transform: rotateY(180deg);
+}
+
+.flipCardBack h3 {
+ font-size: var(--h3-mobile-size);
+ margin-bottom: 12px;
+}
+
+.flipCardBack p {
+ font-size: var(--p-mobile-size);
+ line-height: 1.8;
+}
 
 .aboutContent {
+ width: 100%;
+ max-width: 392px;
+ margin: 0 auto;
+ border-radius: 12px;
  position: relative;
  background: #1d1d1d;
- padding: 40px 24px 80px;
- margin-top: -240px;
+ padding: 40px 24px 40px;
+ margin-top: -90px;
  z-index: 3;
  line-height: 1.4;
  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
@@ -334,7 +418,7 @@ h1.cardTitle {
 }
 
 .aboutSection .aboutTitle,
-.aboutSection .aboutImg,
+.aboutSection .carouselWrapper,
 .aboutContent .aboutContainer {
  position: relative;
  z-index: 2;
@@ -619,6 +703,22 @@ h1.cardTitle {
  height: auto;
 }
 
+.footerContainer {
+ width: 100%;
+ height: 160px;
+ border-top: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerContent {
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: center;
+ font-weight: 100;
+ padding: 90px 24px 24px 24px;
+ gap: 12px;
+}
+
 /*Media query */
 
 @media (min-width: 768px) {
@@ -629,13 +729,31 @@ h1.cardTitle {
   font-weight: 300;
  }
 
- .navContentLinks a {
+ #desktopNav a {
   color: #fff;
   cursor: pointer;
+  position: relative;
  }
+
+ #desktopNav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--btn-color);
+  transition: width 0.3s ease-in-out;
+ }
+
+ #desktopNav a:hover::after {
+  width: 100%;
+ }
+
  #hamburgerBtn {
   display: none;
  }
+
  .heroSection {
   padding-bottom: 90px;
  }
@@ -662,45 +780,56 @@ h1.cardTitle {
   padding: 12px 16px;
  }
 
+ /**** ABout Section ****/
  .aboutSection {
   width: 100%;
-  max-width: 900px;
-  padding: 40px 80px 60px;
-  margin: 48px auto 0;
-  position: relative;
-  background: #1d1d1d;
-  border-radius: 20px;
+  max-width: 1100px;
+  padding: 84px 24px;
  }
 
  .aboutTitle {
-  position: absolute;
-  text-align: right;
-  font-size: clamp(80px, 7vw, 140px);
-  font-weight: 800;
-  line-height: 1;
-  right: 20px;
-  top: 20px;
-  z-index: 3;
+  font-size: 56px;
+  margin-bottom: 48px;
  }
 
- .aboutImg {
-  max-width: 500px;
-  position: absolute;
-  bottom: 10px;
-  left: -20px;
-  z-index: 2;
-  transform: none;
+ .carouselBtn {
+  display: block;
+  padding: 8px;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  cursor: pointer;
  }
 
+ .carouselBtn img {
+  width: 48px;
+ }
+
+ .carouselContainer {
+  max-width: 600px;
+ }
+
+ .carouselWrapper {
+  gap: 32px;
+ }
+
+ .flipCard {
+  flex: 0 0 300px;
+ }
+
+ .flipCardBack h3 {
+  font-size: var(--h2-desktop-size);
+  margin-bottom: 12px;
+ }
+
+ .flipCardBack p {
+  font-size: var(--p-desktop-size);
+  line-height: 1.8;
+ }
  .aboutContent {
   width: 100%;
-  max-width: 900px;
-  transform: none;
-  background: #1d1d1d;
-  margin: -280px auto 0;
-  padding: 60px 50px 40px;
-  position: relative;
-  z-index: 4;
+  max-width: 1100px;
+  margin-top: -120px;
  }
 
  .aboutContainer {
