@@ -1,32 +1,52 @@
 // Hamburger menu + close
+document.addEventListener("DOMContentLoaded", () => {
+ const btn = document.getElementById("hamburgerBtn");
+ const mobileNav = document.getElementById("mobileNav");
 
-const btn = document.getElementById("hamburgerBtn");
-const mobileNav = document.getElementById("mobileNav");
-
-btn.addEventListener("click", () => {
- const openMenu = mobileNav.classList.toggle("active");
- btn.classList.toggle("active");
- btn.setAttribute("aria-expanded", openMenu);
-});
-
-// Close menu
-
-mobileNav.addEventListener("click", (e) => {
- if (e.target.tagName === "A") {
+ // Close menu
+ const closeNavMenu = () => {
   mobileNav.classList.remove("active");
   btn.classList.remove("active");
   btn.setAttribute("aria-expanded", "false");
- }
-});
+  document.body.classList.remove("no-scroll");
+ };
 
-//Close hamburger menu with esc button
+ btn.addEventListener("click", (e) => {
+  e.stopPropagation();
 
-document.addEventListener("keydown", (e) => {
- if (e.key === "Escape") {
-  mobileNav.classList.remove("active");
-  btn.classList.remove("active");
-  btn.setAttribute("aria-expanded", "false");
- }
+  const menuIsOpen = mobileNav.classList.toggle("active");
+  btn.classList.toggle("active");
+  btn.setAttribute("aria-expanded", menuIsOpen);
+
+  if (menuIsOpen) {
+   document.body.classList.add("no-scroll");
+  } else {
+   document.body.classList.remove("no-scroll");
+  }
+ });
+
+ mobileNav.addEventListener("click", (e) => {
+  if (e.target.tagName === "A" || e.target === mobileNav) {
+   closeNavMenu();
+  }
+ });
+
+ document.addEventListener("click", (e) => {
+  const menuIsOpen = mobileNav.classList.contains("active");
+  const clickOutsideNav = !mobileNav.contains(e.target);
+  const clickOutSideBtn = !btn.contains(e.target);
+
+  if (menuIsOpen && clickOutsideNav && clickOutSideBtn) {
+   closeNavMenu();
+  }
+ });
+
+ //Close hamburger menu with esc button
+ document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && mobileNav.classList.contains("active")) {
+   closeNavMenu();
+  }
+ });
 });
 
 //CV Progress bar, fill color while scrolling
@@ -91,6 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
  let currentIndex = 0;
  const maxIndex = flipCards.length - 1;
 
+ flipCards.forEach((card) => {
+  card.addEventListener("click", () => {
+   card.classList.toggle("is-flipped");
+  });
+ });
+
  const updateCarousel = () => {
   carouselContent.style.transform = `translateX(-${currentIndex * 100}%)`;
  };
@@ -140,13 +166,17 @@ document.addEventListener("DOMContentLoaded", () => {
    if (diff > swipeTresh) {
     if (currentIndex < maxIndex) {
      currentIndex++;
-     updateCarousel();
+    } else {
+     currentIndex = 0;
     }
+    updateCarousel();
    } else if (diff < -swipeTresh) {
     if (currentIndex > 0) {
      currentIndex--;
-     updateCarousel();
+    } else {
+     currentIndex = maxIndex;
     }
+    updateCarousel();
    }
   };
  }
